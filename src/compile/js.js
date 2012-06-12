@@ -9,7 +9,7 @@ Flow.compile.Js = function(o) {
 		output      = (o.output      || false),
 		src         = (o.src         || false);
 
-	if(src) {
+	if(destination && src) {
 		var srcList = src.map(function(srcItem) {
 			return calledDir + srcItem;
 		});
