@@ -3,6 +3,10 @@
     "name": "flow",
     "description": "Handles continous development flow of .jade, .scss and .js files",
     "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/chrisabrams/flow.git"
+    },
     "engines": {
         "node": ">= 0.6.17"
     },
