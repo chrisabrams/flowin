@@ -1,7 +1,3 @@
-##Blog
+#Flow
 
-###flow.json
-
-	{
-		"blog": "/%Y/%M/%D/%T"
-	}
+##Commands
