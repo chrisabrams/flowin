@@ -5,14 +5,20 @@ Flow.compile.Js = function(o) {
 		destination = (o.destination || false),
 		frameworks  = (o.frameworks  || false),
 		input       = (o.input       || false),
+		list,
 		output      = (o.output      || false),
 		src         = (o.src         || false);
 
-	if(frameworks && src) {
-		var srcList     = src.map(function(srcItem) {
+	if(src) {
+		var srcList = src.map(function(srcItem) {
 			return calledDir + srcItem;
 		});
-		var list        = frameworks.concat(srcList);
+
+		if(frameworks) {
+			list = frameworks.concat(srcList);
+		} else {
+			list = srcList;
+		}
 
 		var out = list.map(function(item) {
 			return _fs.readFileSync(item, FILE_ENCODING);
