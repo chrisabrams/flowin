@@ -1,0 +1,18 @@
+{
+    "author": "Chris Abrams <mail@chrisabrams.com>",
+    "name": "flow",
+    "description": "Handles continous development flow of .jade, .scss and .js files",
+    "version": "0.0.1",
+    "engines": {
+        "node": ">= 0.6.17"
+    },
+    "dependencies": {
+        "commander": "0.6.1",
+        "markx": "git+ssh://git@github.com:chrisabrams/markx.git#0.1.2",
+        "uglify-js": "1.3.0"
+    },
+    "devDependencies": {
+        "mocha": "1.1.0",
+        "should": "0.6.3"
+    }
+}

@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+
+var Flow = require('../lib/flow')({
+	called : process.cwd(),
+	lib    : __dirname + '/../lib',
+	markx  : __dirname + '/../node_modules/markx/bin/markx'
+});
+
+program
+	.version('0.0.1')
+
+program
+	.command('compile')
+	.description('compile project')
+	.action(function() {
+		Flow.compiler();
+	});
+
+program.parse(process.argv);
