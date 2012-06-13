@@ -18,43 +18,32 @@ Flow.compiler = function(o) {
 
 		}
 
-		if(html) {
-			if(html.singles) {
-				Flow.compile.Singles({
-					calledDir : calledDir,
-					files     : html.singles
-				});
+		if(html && html.files) {
+			Flow.compile({
+				calledDir : calledDir,
+				files     : html.files,
+				type      : 'html'
+			});
 
-				for(htmlSingle in html.singles) {
-					fileList.push(htmlSingle.toString());
-				}
-			}
+			html.files.forEach(function(file, key) {
+				file.src.forEach(function() {
+					fileList.push(file.toString());
+				});
+			});
 		}
 
-		if(js) {
-			if(js.destination && js.frameworks && js.src) {
-				Flow.compile.Js({
-					calledDir   : calledDir,
-					destination : (js.destination || false),
-					frameworks  : (js.frameworks  || false),
-					src         : (js.src         || false)
-				});
+		if(js && js.files) {
+			Flow.compile({
+				calledDir : calledDir,
+				files     : js.files,
+				type      : 'js'
+			});
 
-				js.src.forEach(function(val, key) {
-					fileList.push(val.toString());
+			js.files.forEach(function(file, key) {
+				file.src.forEach(function(file, key) {
+					fileList.push(file.toString());
 				});
-			}
-
-			if(js.singles) {
-				Flow.compile.Singles({
-					calledDir : calledDir,
-					files     : js.singles
-				});
-
-				for(jsSingle in html.singles) {
-					fileList.push(jsSingle.toString());
-				}
-			}
+			});
 		}
 	}
 

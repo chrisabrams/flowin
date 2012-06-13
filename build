@@ -19,9 +19,6 @@ concat([
     './src/flow.js',
     './src/exports.js',
     './src/compile/compile.js',
-    './src/compile/jade.js',
-    './src/compile/js.js',
-    './src/compile/singles.js',
     './src/watch.js',
     './src/compiler.js'
 ], DIST_FILE_PATH);
