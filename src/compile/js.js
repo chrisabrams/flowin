@@ -23,7 +23,7 @@ Flow.compile.Js = function(o) {
 		var out = list.map(function(item) {
 			return _fs.readFileSync(item, FILE_ENCODING);
 		});
-		_fs.writeFileSync(destination, out.join(EOL), FILE_ENCODING);
+		_fs.writeFileSync(calledDir + destination, out.join(EOL), FILE_ENCODING);
 	}
 
 	if(input && output) {
