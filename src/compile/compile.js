@@ -15,9 +15,9 @@ Flow.compile = function(o) {
 	if(calledDir && files && type) {
 		switch(type) {
 			case 'html':
-				files.forEach(function(file, key) {
-					output     = (file.output     || false);
-					src        = (file.src        || false);
+				for(file in files) {
+					output = (files[file].toString() || false);
+					src    = (file.toString()        || false);
 
 					if(output && src) {
 						var command  = Flow.path.markx + ' ' + calledDir + src + ' > ' + calledDir + output;
@@ -31,7 +31,7 @@ Flow.compile = function(o) {
 							}
 						});
 					}
-				});
+				}
 
 				break;
 

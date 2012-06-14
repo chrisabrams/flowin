@@ -4,9 +4,14 @@ Flow.watch = function(o) {
 	var file = (o.file || false);
 
 	if(file) {
+		console.log("Watching: ", file);
 		_fs.watch(file, {
 			persistant: true
 		}, function(ev, file) {
+			console.log(' ');
+			console.log('Compiling...');
+			console.log(' ');
+
 			Flow.compiler({
 				watch: false
 			});
