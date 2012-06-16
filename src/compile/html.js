@@ -1,4 +1,4 @@
-Flow.compile.html = function(o) {
+Flow.compile.html = function(o, callback) {
 
 	var command   = Flow.path.markx + ' ',
 		md        = (o.md     || false),
@@ -29,6 +29,8 @@ Flow.compile.html = function(o) {
 				console.log('exec error: ' + error);
 				console.log('stdout: ' + stdout);
 				console.log('stderr: ' + stderr);
+			} else {
+				callback();
 			}
 		});
 	}

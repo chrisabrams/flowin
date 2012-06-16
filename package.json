@@ -2,7 +2,7 @@
     "author": "Chris Abrams <mail@chrisabrams.com>",
     "name": "flow",
     "description": "Handles continous development flow of .jade, .scss and .js files",
-    "version": "0.0.7",
+    "version": "0.0.9",
     "repository": {
         "type": "git",
         "url": "git://github.com/chrisabrams/flow.git"
