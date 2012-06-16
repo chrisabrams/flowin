@@ -16,11 +16,13 @@ function concat(fileList, distPath) {
 }
 
 concat([
-    './src/flow.js',
-    './src/exports.js',
-    './src/compile/compile.js',
-    './src/watch.js',
-    './src/compiler.js'
+    "./src/flow.js",
+    "./src/exports.js",
+    "./src/compile/compile.js",
+    "./src/compile/html.js",
+    "./src/compile/compiler.js",
+    "./src/init.js",
+    "./src/watch.js"
 ], DIST_FILE_PATH);
 
 function uglify(srcPath, distPath) {

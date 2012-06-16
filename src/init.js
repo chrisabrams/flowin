@@ -1,4 +1,4 @@
-Flow.compiler = function(o) {
+Flow.init = function(o) {
 	o = (o || {});
 
 	var watch       = (o.watch || true),
@@ -22,7 +22,7 @@ Flow.compiler = function(o) {
 		}
 
 		if(html && html.files) {
-			Flow.compile({
+			Flow.compiler({
 				calledDir : calledDir,
 				files     : html.files,
 				type      : 'html'
@@ -39,7 +39,7 @@ Flow.compiler = function(o) {
 		}
 
 		if(js && js.files) {
-			Flow.compile({
+			Flow.compiler({
 				calledDir : calledDir,
 				files     : js.files,
 				type      : 'js'

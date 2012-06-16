@@ -12,7 +12,7 @@ Flow.watch = function(o) {
 			console.log('Compiling...');
 			console.log(' ');
 
-			Flow.compiler({
+			Flow.init({
 				watch: false
 			});
 		});

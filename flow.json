@@ -1,0 +1,18 @@
+{
+	"project": {
+		"files": {
+			"js": {
+				"output": "/lib/flow.js",
+				"src": [
+					"/src/flow.js",
+				    "/src/exports.js",
+				    "/src/compile/compile.js",
+				    "/src/compile/jade.js",
+				    "/src/compile/compiler.js",
+				    "/src/init.js",
+				    "/src/watch.js"
+				]
+			}
+		}
+	}
+}

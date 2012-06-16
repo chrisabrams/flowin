@@ -13,11 +13,11 @@ program
 	.version('0.0.1')
 
 program
-	.command('compile')
-	.description('compile project')
+	.command('init')
+	.description('init project')
 	.action(function() {
 		exec('ulimit -n 10000', function(error, stdout, stderr) {
-			Flow.compiler();
+			Flow.init();
 		});
 	});
 
