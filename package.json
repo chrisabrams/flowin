@@ -14,7 +14,6 @@
         "commander": "0.6.1",
         "markx": "git+ssh://git@github.com:chrisabrams/markx.git#0.1.2",
         "stylus": "0.27.1",
-        "stylus-sprite": "git+ssh://git@github.com:chrisabrams/stylus-sprite.git#0.0.3",
         "wrench": "1.3.9",
         "uglify-js": "1.3.0"
     },
