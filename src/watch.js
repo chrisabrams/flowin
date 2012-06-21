@@ -5,8 +5,9 @@ Flow.watch = function(o) {
 
 	if(file) {
 		console.log("Watching: ", file);
-		_fs.watch(file, {
-			persistant: true
+		fs.watch(file, {
+			persistant: true,
+			internal: 1000
 		}, function(ev, file) {
 			console.log(' ');
 			console.log('Compiling...');

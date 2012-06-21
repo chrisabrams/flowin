@@ -20,6 +20,7 @@ concat([
     "./src/exports.js",
     "./src/compile/compile.js",
     "./src/compile/html.js",
+    "./src/compile/stylus.js",
     "./src/compile/compiler.js",
     "./src/init.js",
     "./src/watch.js"

@@ -53,9 +53,9 @@ Flow.compiler = function(o) {
 						}
 
 						out = list.map(function(item) {
-							return _fs.readFileSync(item, FILE_ENCODING);
+							return fs.readFileSync(item, FILE_ENCODING);
 						});
-						_fs.writeFileSync(calledDir + output, out.join(EOL), FILE_ENCODING);
+						fs.writeFileSync(calledDir + output, out.join(EOL), FILE_ENCODING);
 					}
 				});
 

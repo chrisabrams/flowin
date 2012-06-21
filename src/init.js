@@ -18,7 +18,17 @@ Flow.init = function(o) {
 			js   = (project.js   || false);
 
 		if(css) {
+			for(cssFile in css.files) {
+				Flow.compile[css.engine]({
+					output: calledDir + css.files[cssFile],
+					src:    calledDir + cssFile,
+					paths: [
+						calledDir + '/src/stylus/'
+					]
+				});
 
+				fileList.push(calledDir + cssFile.toString())
+			}
 		}
 
 		if(html && html.files) {
@@ -28,11 +38,6 @@ Flow.init = function(o) {
 				type      : 'html'
 			});
 
-			/*html.files.forEach(function(file, key) {
-				file.src.forEach(function() {
-					fileList.push(file.toString());
-				});
-			});*/
 			for(htmlFile in html.files) {
 				fileList.push(calledDir + htmlFile.toString())
 			}
