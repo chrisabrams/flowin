@@ -9,7 +9,9 @@ var Flow = require('../lib/flow')({
 	markx  : __dirname + '/../node_modules/markx/bin/markx'
 });
 
-var clc = require('cli-color');
+var clc   = require('cli-color');
+var io    = require('socket.io').listen(8098).set('log level', 1);
+var sio;
 var watch = require('watch');
 
 program
@@ -100,12 +102,30 @@ program
 					Flow.init({buildpath: process.cwd()});
 				}
 
+				if(sio && sio.emit) {
+					sleep(1000);
+					sio.emit('reload', true);
+				}
+				
 				building = false;
 				buildPath = '';
 				buildType = '';
 				counter = 0;
 			}
 		}, 1000);
+
+		io.sockets.on('connection', function (socket) {
+			sio = socket;
+			//console.log(clc.gray('Client connected.'));
+
+			socket.on('reloaded', function(obj) {
+				if(obj) {
+					console.log(clc.gray('Page reloaded.'));
+				}
+			});
+		});
+
+		console.log(clc.yellow('Socket server started.'));
 	});
 
 program.parse(process.argv);

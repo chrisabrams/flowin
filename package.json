@@ -1,6 +1,6 @@
 {
     "author": "Chris Abrams <mail@chrisabrams.com>",
-    "name": "flow",
+    "name": "flowin",
     "description": "Handles continous development flow of .jade, .scss and .js files",
     "version": "0.0.10",
     "repository": {
