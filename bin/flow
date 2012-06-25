@@ -9,6 +9,9 @@ var Flow = require('../lib/flow')({
 	markx  : __dirname + '/../node_modules/markx/bin/markx'
 });
 
+var clc = require('cli-color');
+var watch = require('watch');
+
 program
 	.version('0.0.1')
 
@@ -19,6 +22,90 @@ program
 		exec('ulimit -n 10000', function(error, stdout, stderr) {
 			Flow.init();
 		});
+	});
+
+program
+	.command('start')
+	.description('ldsakjfs')
+	.action(function() {
+		function sleep(milliseconds) {
+		  var start = new Date().getTime();
+		  for (var i = 0; i < 1e7; i++) {
+		    if ((new Date().getTime() - start) > milliseconds){
+		      break;
+		    }
+		  }
+		}
+
+		var building = false;
+		var counter = 1;
+		var buildPath = process.cwd();
+		var buildType = 'Project';
+		var tree = process.cwd() + '/src';
+		console.log(clc.blue('Watching project: ') + tree);
+
+		watch.watchTree(tree, function(file, curr, prev) {
+			if(typeof file == "object" && curr == null && prev == null) {
+				//nothing going on here
+			} else if(prev === null) {
+				//var newFile = 'New file created: ' + file;
+				//console.log(newFile.cyan);
+			} else if(curr.nlink === null) {
+				//var delFile = 'File was deleted: ' + file;
+				//console.log(delFile.grey);
+			} else {
+				console.log(clc.blue('Project change detected'));
+				console.log(clc.gray('File changed: ') + file);
+				counter++;
+				buildPath = process.cwd();
+				buildType = 'Project';
+			}
+		});
+
+		var calledDir   = Flow.path.called;
+		var config      = require(calledDir + '/flow.json');
+
+		if(config.project.watch) {
+			for(var i = 0; i < config.project.watch.length; i++) {
+				console.log(clc.magenta('Watching framework: ') + tree);
+
+				watch.watchTree(config.project.watch[i], function(file, curr, prev) {
+					if(typeof file == "object" && curr == null && prev == null) {
+						//nothing going on here
+					} else if(prev === null) {
+						//var newFile = 'New file created: ' + file;
+						//console.log(newFile.cyan);
+					} else if(curr.nlink === null) {
+						//var delFile = 'File was deleted: ' + file;
+						//console.log(delFile.grey);
+					} else {
+						console.log(clc.magenta('Framework change detected'));
+						console.log(clc.gray('File changed: ') + file);
+						counter++;
+						buildPath = config.project.watch[i];
+						buildType = 'Framework';
+					}
+				});
+			}
+		}
+
+		setInterval(function() {
+			if(building === false && counter > 0) {
+				building = true;
+				console.log(clc.cyan('Building '+buildType+'...'));
+				Flow.init({buildpath: buildPath});
+				if(buildType === 'Framework') {
+					sleep(1000);
+					console.log(clc.cyan('Building Project...'));
+					Flow.init({buildpath: process.cwd()});
+				}
+
+				building = false;
+				buildPath = '';
+				buildType = '';
+				counter = 0;
+			}
+		}, 1000);
 	});
 
 program.parse(process.argv);

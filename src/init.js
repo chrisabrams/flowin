@@ -4,13 +4,13 @@ Flow.init = function(o) {
 	var watch       = (o.watch || true),
 		fileList    = [];
 
-	var calledDir   = Flow.path.called;
+	var calledDir   = (o.buildpath || Flow.path.called);
 	var configPath  = calledDir + '/flow.json';
 	var config      = require(configPath);
 	var project     = (config.project || false);
 
 	//Will recompile project when settings file is updated
-	fileList.push(calledDir + '/flow.json');
+	//fileList.push(calledDir + '/flow.json');
 
 	if(project) {
 		var css  = (project.css  || false),
@@ -27,7 +27,7 @@ Flow.init = function(o) {
 					]
 				});
 
-				fileList.push(calledDir + cssFile.toString())
+				//fileList.push(calledDir + cssFile.toString())
 			}
 		}
 
@@ -38,9 +38,9 @@ Flow.init = function(o) {
 				type      : 'html'
 			});
 
-			for(htmlFile in html.files) {
+			/*for(htmlFile in html.files) {
 				fileList.push(calledDir + htmlFile.toString())
-			}
+			}*/
 		}
 
 		if(js && js.files) {
@@ -57,18 +57,18 @@ Flow.init = function(o) {
 					});
 				}
 
-				file.src.forEach(function(file, key) {
+				/*file.src.forEach(function(file, key) {
 					fileList.push(calledDir + file.toString());
-				});
+				});*/
 			});
 		}
 	}
 
-	if(watch) {
+	/*if(watch) {
 		fileList.forEach(function(val, key) {
 			Flow.watch({
 				file: val
 			});
 		});
-	}
+	}*/
 };

@@ -23,6 +23,8 @@ Flow.compile.html = function(o, callback) {
 		command += src + ' > ';
 		command += output;
 
+		fs.unlinkSync(output);
+
 		exec(command, function(error, stdout, stderr) {
 			
 			if(error !== null) {
