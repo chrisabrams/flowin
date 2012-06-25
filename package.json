@@ -1,11 +1,11 @@
 {
     "author": "Chris Abrams <mail@chrisabrams.com>",
     "name": "flowin",
-    "description": "Handles continous development flow of .jade, .scss and .js files",
-    "version": "0.0.10",
+    "description": "Real-time project builder & browser-refresh using node.js",
+    "version": "0.0.11",
     "repository": {
         "type": "git",
-        "url": "git://github.com/chrisabrams/flow.git"
+        "url": "git://github.com/chrisabrams/flowin.git"
     },
     "engines": {
         "node": ">= 0.6.17"
