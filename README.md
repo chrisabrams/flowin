@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/chrisabrams/flowin.png)](http://travis-ci.org/chrisabrams/flowin)
 #Flow
 
 ##Compiling Jade and Markdown to HTML
